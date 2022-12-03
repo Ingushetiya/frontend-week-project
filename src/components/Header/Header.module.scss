@@ -1,0 +1,24 @@
+.wrapper{
+    background: #403C3B;
+    height: 99px;
+    width: 100%;
+    margin: 0 auto;
+    .content{
+        display: flex;
+    }
+    
+    input{
+        font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #CFCFCF; 
+    }
+   .contact{
+    position: relative;
+    img{
+        position: absolute;
+    }
+}
+}
