@@ -1,24 +1,93 @@
 .wrapper{
+
     background: #403C3B;
-    height: 99px;
+    height: 80px;
     width: 100%;
-    margin: 0 auto;
+    display: flex;
+    align-items: center;
     .content{
         display: flex;
+        align-items: center;
+       
     }
-    
-    input{
+    .logo{
+        margin-left: 90px;
+        margin-right: 70px;
+    }
+
+    .input{
+        display: flex;
+        
+        align-items: center;
+        background: #504B4A;
+        border-radius: 10px;
+        width: 555px;
+        height: 42px;
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        img{
+            margin-left: 20px;
+        }
+        
+    }
+    input[type="search"]{
+        color: #fff;
+        height: 32px;
+        margin-left: 50px;
+        width: 400px;
+        background: #504B4A;
+        border: #504B4A ;
+        
+    }
+    ::placeholder { 
         font-family: 'Gilroy';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
-    color: #CFCFCF; 
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        // line-height: 21px;
+        color: #CFCFCF;
+        // padding: 0 50px;
+        // text-align:center;
+    
     }
-   .contact{
-    position: relative;
-    img{
-        position: absolute;
+
+}
+
+    .contact{
+        display: flex;
+        margin-left: 20px;
+        justify-content: center;
+        align-items: center;
+        .call{
+            height: 32px;
+            width: 32px;
+            background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+        p{
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 20px;
+            color: #CFCFCF;
+            span{color:#FFFFFF;}
+            
+        }
     }
-}
-}
+
+    .adress{
+        display: flex;
+        align-items: center;
+        // .location{
+        //     z-index: 20;
+        //     position: absolute;
+        //     top: 7px;
+        //     left: 10px;
+        // }
+    }
