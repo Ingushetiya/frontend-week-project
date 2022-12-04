@@ -49,6 +49,11 @@ const Header = () => {
               </p>
             </div>
           </div>
+          <div className={styles.basket}>
+            <span>Корзина</span>
+            <div className={styles.line}></div>
+            <div className={styles.quantity}><span>5</span></div>
+          </div>
         </div>
       </div>
     </div>
