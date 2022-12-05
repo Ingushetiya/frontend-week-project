@@ -5,11 +5,13 @@
     background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
     display: flex;
     align-items: center;
+    
     .ul{
         display: flex;
         justify-content: space-around;
         width: 100%;
         li{
+            cursor: pointer;
             font-family: 'Gilroy';
             font-style: normal;
             font-weight: 500;
