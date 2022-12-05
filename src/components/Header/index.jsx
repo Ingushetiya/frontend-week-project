@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 const Header = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
+          <Link to="/">
           <img
             className={styles.logo}
             width={50}
@@ -12,7 +14,7 @@ const Header = () => {
             src={"assets/logo.png"}
             alt="logo"
           />
-
+          </Link>
           <div className={styles.adress}>
             <div className={styles.input}>
               <img
@@ -49,11 +51,14 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <div className={styles.basket}>
+          <Link to="/basket">
+            <div className={styles.basket}>
             <span>Корзина</span>
             <div className={styles.line}></div>
             <div className={styles.quantity}><span>5</span></div>
           </div>
+          </Link>
+          
         </div>
       </div>
     </div>

@@ -1,0 +1,29 @@
+.wrapper{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    height: 80px;
+    width: 100%;
+    background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+    display: flex;
+    align-items: center;
+    .ul{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        li{
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            color: #FFFFFF;
+            list-style: none;
+        }
+       .active{
+        color: #FFFFFF;
+        border: 2px solid red;
+       }
+    }
+}
+
+
+    
