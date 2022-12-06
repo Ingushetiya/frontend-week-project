@@ -1,0 +1,57 @@
+.addMeal{
+    text-align: center;
+    margin-left: 35px;
+    width: 20%;
+    
+    img{
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    h3{
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    }
+    .btn{
+        display: flex;
+        justify-content: center;
+        span{
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            color: #C6CED1
+        }
+        
+    }
+
+    .btn_plus{
+        width: 18px;
+        height: 18px;
+        background: #66906C;
+        margin-left: 10px;
+        border-radius: 20px;
+    }
+
+    .price{
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        color: #FFFFFF;
+    }
+    .border{
+        position: relative;
+        border: 1px solid #635C5A;
+        transform: rotate(90deg); 
+        left: 150px;
+        top: -88px;
+        width: 170px;
+    }
+}

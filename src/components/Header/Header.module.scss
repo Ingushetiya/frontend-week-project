@@ -9,7 +9,9 @@
     .content{
         display: flex;
         align-items: center;
-       
+       a{
+        text-decoration: none;
+       }
     }
     .logo{
         margin-left: 90px;
@@ -124,7 +126,7 @@
         height:25px;
         background-color: #fff;
         border-radius: 20px;
-        margin-left: -5px;
+        margin-left: -9px;
         span{
             position: relative;
             top: 3.5px;
