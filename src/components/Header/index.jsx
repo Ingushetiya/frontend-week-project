@@ -51,6 +51,16 @@ const Header = () => {
               </p>
             </div>
           </div>
+
+            <div className={styles.auth}>
+              <div className={styles.line_auth}></div>
+              <img src="assets/authlogo.svg" alt="authlogo" />
+              <span>Войти</span>
+              <div className="user">
+
+              </div>
+            </div>
+
           <Link to="/basket">
             <div className={styles.basket}>
             <span>Корзина</span>
