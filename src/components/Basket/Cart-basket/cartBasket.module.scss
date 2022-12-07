@@ -91,9 +91,11 @@
         line-height: 24px;
         color: #FFFFFF;
         margin-left: 110px;
+        
     }
 
    .remove{
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,6 +106,9 @@
     background: #72A479;
     transform: rotate(45deg);
     margin-left: 70px;
+    img{
+        transform: rotate(45deg);
+    }
    }
     
 }

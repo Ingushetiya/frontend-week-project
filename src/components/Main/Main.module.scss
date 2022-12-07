@@ -1,0 +1,14 @@
+.ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+    width: 100%;
+    >li{
+    
+        width: 350px;
+        height: 375px;
+        margin: 20px ; 
+    }
+ 
+}

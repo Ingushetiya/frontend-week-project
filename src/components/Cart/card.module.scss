@@ -1,0 +1,86 @@
+.card{
+    // width: 100%;
+    // margin: auto;
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    .card_img{
+        // width: 100%;
+
+        img{
+            // display: block;
+            width: 100%;
+        }
+    }
+    .info{
+        display: flex;
+        justify-content: space-around;
+
+        .text{
+            padding: 0 10px;
+            // width: 200px;
+            .name{
+                margin: 5px 0;
+                color: white;
+                font-family: "Gilroy";
+                font-weight: 600;
+            }
+            .description{
+                font-family: 'Gilroy';
+                font-size: 13px;
+                line-height: 17px;
+                color: #CFCFCF;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                margin-bottom: 10px;
+                // height: 3.9em;
+            }
+           
+        }
+        
+        .text_1{
+
+            padding: 0 5px;
+            width: 125px;
+            .weigth{
+                text-align: end;
+                color: white;
+                font-family: "Gilroy";
+                font-size: 15px;
+                margin: 10px 10px;
+            }
+        }
+    }
+    .button{
+        // margin-top: 54px;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        
+        .price{
+            display: flex;
+            align-items: center;
+            color: white;
+            font-family: "Gilroy";
+            font-weight: 600;
+        }
+        button{
+            width: 110px;
+            padding: 10px ;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+            color: white;
+            img{
+                width: 13px;
+                margin-left: 8px;
+                position: relative;
+                top: 3px;
+
+
+            }
+        }
+    }
+}
