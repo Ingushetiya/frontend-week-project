@@ -19,6 +19,18 @@ export const  fetchProduct = createAsyncThunk("product/fetch", async(_, thunkAPI
         return thunkAPI.rejectWithValue(error.message)
     }
 })
+export const addBasket = createAsyncThunk("product/addBasket", async (data, thunkAPI)=>{
+    try {
+        
+        const res = await fetch("http://localhost:5000/basket",{
+            method: "POST",
+            body: JSON.stringify({ userId: data, products: data }),
+            headers: { "Content-type": "application/json" },
+        })
+    } catch (error) {
+        
+    }
+})
 
 
 const basketSlice = createSlice({

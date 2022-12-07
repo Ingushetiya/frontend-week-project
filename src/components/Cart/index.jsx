@@ -11,18 +11,19 @@ export default function Cart({description, image, name, price, weight}) {
         <div className={styles.info}>
           <div className={styles.text}>
             <div className={styles.name}>{name}</div>
-            <div className={styles.description}>{}</div>
-            <div className={styles.price}>{price} ₽</div>
+            <div className={styles.description}>{description}</div>
+            
           </div>
           <div className={styles.text_1}>
-            <div className={styles.weigth}>{weight}:225г</div>
+            <div className={styles.weigth}>{weight}г</div>
+          </div>
+        </div>
             <div className={styles.button}>
+            <div className={styles.price}>{price} ₽</div>
               <button>
                 В корзину <img src="assets/Buy.svg" alt="none" />
               </button>
             </div>
-          </div>
-        </div>
       </div>
     </>
   );
