@@ -3,7 +3,7 @@ import Basket from "./components/Basket";
 import Category from "./components/Category";
 import Header from "./components/Header";
 import Authorization from "./components/Authorization";
-import Registration from './components/registr'
+import Registration from './components/Registration'
 import Main from "./components/Main/index"
 
 
