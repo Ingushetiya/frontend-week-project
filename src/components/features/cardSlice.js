@@ -7,7 +7,7 @@ const initialState = {
 };
 
 
-
+ //надеюсь понадобится
 export const getCard = createAsyncThunk("cards/fetch", async (_, thunkAPI) => {
     try {
         const res = await fetch("http://localhost:5000/card");
