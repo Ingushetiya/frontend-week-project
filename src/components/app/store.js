@@ -3,5 +3,7 @@ import BasketSlice from "../features/BasketSlice"
 import UserSlice from '../features/UserSlice'
 
 export const store = configureStore({
-    reducer: {basket: BasketSlice, user:UserSlice},
+
+    reducer: { products: BasketSlice, user:UserSlice},
+
 })
