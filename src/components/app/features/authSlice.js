@@ -1,11 +1,34 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  users: [],
+  userName: null,
   loading: false,
   error: null,
+  signingUp: false,
+  signingIn: false,
+  token: localStorage.getItem("token"),
 };
 
+export const authSignUp = createAsyncThunk(
+  "auth/signup",
+  async ({ login, password }, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:5000/registration", {
+        method: "POST",
+        body: JSON.stringify({ login, password }),
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      });
+
+      const json = await res.json();
+      if (json.error) {
+        return thunkAPI.rejectWithValue(json.error);
+      }
+      return json;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 export const fetchUser = createAsyncThunk("get/users", async (_, thunkAPI) => {
   try {
     const res = await fetch("http://localhost:5000/users", {
@@ -14,6 +37,7 @@ export const fetchUser = createAsyncThunk("get/users", async (_, thunkAPI) => {
       },
     });
     const users = await res.json();
+    console.log(users);
     if (users.error) {
       return thunkAPI.rejectWithValue(users.error);
     }
@@ -23,7 +47,7 @@ export const fetchUser = createAsyncThunk("get/users", async (_, thunkAPI) => {
   }
 });
 
-export const login = createAsyncThunk("login", async (_, thunkAPI) => {
+export const logIn = createAsyncThunk("login", async ({login, password}, thunkAPI) => {
   try {
     const response = await fetch("http://localhost:5000/login", {
       method: "POST",
@@ -34,7 +58,10 @@ export const login = createAsyncThunk("login", async (_, thunkAPI) => {
       headers: { "Content-type": "application/json" },
     });
     const data = await response.json();
+    console.log(data)
     localStorage.setItem("token", data.token);
+    return thunkAPI.fulfillWithValue(data)
+
   } catch (error) {
    return thunkAPI.rejectWithValue(error)
   }
@@ -46,28 +73,43 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUser.fulfilled, (state, actions) => {
-        state.users = actions.payload;
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.users = action.payload;
         state.loading = false;
       })
-      .addCase(fetchUser.rejected, (state, actions) => {
-        state.error = actions.payload;
+      .addCase(fetchUser.rejected, (state, action) => {
+        state.error = action.payload;
         state.loading = false;
       })
-      .addCase(fetchUser.pending, (state, actions) => {
+      .addCase(fetchUser.pending, (state, action) => {
         state.loading = true;
         state.error = null;
       })
       //===================================
-      .addCase(login.pending, (state, actions) => {
-        state.loading = true,
+      .addCase(logIn.pending, (state, actions) => {
+        state.loading = true
       })
-      .addCase(login.fulfilled, (state, actions) => {
-        // state.token = 
+      .addCase(logIn.fulfilled, (state, action) => {
+        console.log(action.payload)
+        state.userName = action.payload.login
+        console.log(state.userName)
       })
-      .addCase(login.rejected, (state, actions) => {
-        state.error = actions.payload
-      });
+      .addCase(logIn.rejected, (state, action) => {
+        state.error = action.payload
+        
+      })
+      .addCase(authSignUp.pending, (state) => {
+        state.error = null;
+        state.signingUp = true;
+      })
+      .addCase(authSignUp.rejected, (state, action) => {
+        state.signingUp = false;
+        state.error = action.payload;
+      })
+      .addCase(authSignUp.fulfilled, (state, action) => {
+        state.signingUp = false;
+        state.error = null;
+      })
   },
 });
 

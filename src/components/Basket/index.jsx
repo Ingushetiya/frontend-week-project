@@ -3,7 +3,19 @@ import CartBasket from "./Cart-basket";
 import AddToOrder from "./addMeal";
 import styles from "./Basket.module.scss";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux"
+import { fetchUserBasket } from "../app/features/BasketSlice";
+
 const Basket = () => {
+  const product = useSelector((state)=> state.products.products)
+  console.log("product", product);
+  const basketUser = useSelector((state)=> state.products.basket)
+  console.log("EEEEEE", basketUser);
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(fetchUserBasket())
+  }, [dispatch])
   return (
     <div className={styles.wrapper}>
       
@@ -16,7 +28,10 @@ const Basket = () => {
         </div>
       </div>
       <div className={styles.cartParrent}>
-        <CartBasket />
+        {basketUser.products?.map(item=>{
+          
+        })}
+        <CartBasket />  
       </div>
       
       <div className={styles.addOrderText}>ДОБАВИТЬ К ЗАКАЗУ</div>

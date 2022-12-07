@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
+import { useSelector } from 'react-redux'
 const Header = () => {
+  const userName = useSelector((state)=> state.user.userName)
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -51,15 +53,16 @@ const Header = () => {
               </p>
             </div>
           </div>
-
+          <Link to="/auth">
             <div className={styles.auth}>
               <div className={styles.line_auth}></div>
               <img src="assets/authlogo.svg" alt="authlogo" />
-              <span>Войти</span>
+              <span>{userName? userName:"Войти"}</span>
               <div className="user">
 
               </div>
             </div>
+            </Link>
 
           <Link to="/basket">
             <div className={styles.basket}>

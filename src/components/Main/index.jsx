@@ -5,11 +5,10 @@ import { fetchProduct } from '../app/features/BasketSlice';
 import Cart from '../Cart/index'
 const Main = () => {
     const product = useSelector((state)=> state.products.products)
-    console.log(product);
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(fetchProduct())
-    }, dispatch)
+    }, [dispatch])
     
     return (
         <ul className={styles.ul}>
