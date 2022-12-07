@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
+import {Routes,Route} from 'react-router-dom'
 const Header = () => {
   return (
     <div className={styles.wrapper}>
@@ -51,7 +52,7 @@ const Header = () => {
               </p>
             </div>
           </div>
-
+<Link to="/auth">
             <div className={styles.auth}>
               <div className={styles.line_auth}></div>
               <img src="assets/authlogo.svg" alt="authlogo" />
@@ -60,6 +61,7 @@ const Header = () => {
 
               </div>
             </div>
+            </Link>
 
           <Link to="/basket">
             <div className={styles.basket}>

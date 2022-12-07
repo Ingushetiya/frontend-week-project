@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Authorization = () => {
+const index = () => {
     return (
         <div>
-            
+            dhgfh
         </div>
     );
 };
 
-export default Authorization;
+export default index;
