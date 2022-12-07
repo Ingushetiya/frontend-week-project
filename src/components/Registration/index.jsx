@@ -10,7 +10,6 @@ const Reg = () => {
   const [password, setPassword] = useState("");
   const error = useSelector((state) => state.user.error);
   const message = useSelector((state) => state.user.message);
-  console.log(error);
 
   const dispatch = useDispatch();
   const handleLogIn = () => {

@@ -10,7 +10,6 @@ const Authorization = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const error = useSelector((state) => state.user.error);
-  console.log(error);
 
   const dispatch = useDispatch();
   const handleLogIn = () => {
@@ -21,7 +20,6 @@ const Authorization = () => {
       })
     ).then((data) => {
       if (!data.error) {
-        console.log(data.error);
         navigate("/", { replace: true });
       }
     });

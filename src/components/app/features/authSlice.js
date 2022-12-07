@@ -22,7 +22,6 @@ export const authSignUp = createAsyncThunk(
 
       const json = await res.json();
       if (json.error) {
-        console.log(json.error);
         return thunkAPI.rejectWithValue(json.error);
       }
       return json;
@@ -39,7 +38,6 @@ export const fetchUser = createAsyncThunk("get/users", async (_, thunkAPI) => {
       },
     });
     const users = await res.json();
-    console.log(users);
     if (users.error) {
       return thunkAPI.rejectWithValue(users.error);
     }
@@ -65,7 +63,6 @@ export const logIn = createAsyncThunk(
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       }
-      console.log(data);
       localStorage.setItem("token", data.token);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
