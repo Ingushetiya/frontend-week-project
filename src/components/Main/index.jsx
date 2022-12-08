@@ -3,11 +3,11 @@ import styles from "./Main.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct } from "../app/features/BasketSlice";
 import Cart from "../Cart/index";
-import Skeleton from "../Skeleton";
+import { SkeletonMain } from "../Skeleton";
 const Main = () => {
   const product = useSelector((state) => state.products.products);
   const isLoading = useSelector((state) => state.products.loading);
-  
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProduct());
@@ -19,7 +19,7 @@ const Main = () => {
         ? [...new Array(6)].map((_, index) => {
             return (
               <li>
-                <Skeleton key={index} />
+                <SkeletonMain key={index} />
               </li>
             );
           })
