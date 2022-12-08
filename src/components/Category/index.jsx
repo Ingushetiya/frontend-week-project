@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Category.module.scss";
 const Category = () => {
   const [isActive, setIsActive] = useState(0);
+  console.log(isActive);
   const list = [
     "Бургеры",
     "Мясные блюда",

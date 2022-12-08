@@ -6,7 +6,7 @@ const initialState = {
     loadind: false
 }
 
-export const  fetchProduct = createAsyncThunk("product/fetch", async(_, thunkAPI)=>{
+export const fetchProduct = createAsyncThunk("product/fetch", async(_, thunkAPI)=>{
     try {
         const res = await fetch("http://localhost:5000/product")
         const products = await res.json()
