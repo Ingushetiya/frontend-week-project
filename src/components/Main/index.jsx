@@ -5,6 +5,7 @@ import { fetchProduct } from "../app/features/BasketSlice";
 import Cart from "../Cart/index";
 
 const Main = ({ index }) => {
+  
   const product = useSelector((state) => state.products.products);
   const filteredProduct = product.filter((item) => {
     if (index === 0) {

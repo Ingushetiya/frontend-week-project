@@ -1,8 +1,6 @@
 
 import styles from "./Category.module.scss";
 const Category = ({list,isActive,setIsActive}) => {
-
- 
  
   return (
     <div className={styles.wrapper}>
