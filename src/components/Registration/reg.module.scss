@@ -20,15 +20,6 @@ body {
   justify-content: center;
   border-radius: 10px;
 }
-.block_login {
-  gap: 20px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-}
 .inp {
   font-family: "Gilroy";
   font-size: larger;
@@ -54,38 +45,19 @@ body {
     filter: brightness(80%);
   }
 }
+.subtitle {
+  margin-right: 10px;
+}
 
-.register_link {
+.login_lik {
   text-decoration: none;
   color: #fff;
   border-bottom: 1px solid #fff;
 }
 
-.subtitle {
-  margin-right: 10px;
-}
-
-.logOut_block {
-  text-align: center;
-  button {
-    font-family: "Gilroy";
-    font-size: larger;
-    width: 50%;
-    height: 50px;
-    margin-top: 20px;
-    border-radius: 10px;
-    border-style: none;
-    cursor: pointer;
-    &:hover {
-      opacity: 0.8;
-    }
-    &:active {
-      transform: scale(0.99);
-      filter: brightness(80%);
-    }
-  }
-}
-
 .messageError {
   color: red;
+}
+.messageOk {
+  color: #23e600;
 }
