@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  message: null,
   userName: null,
   loading: false,
   error: null,
@@ -25,7 +26,7 @@ export const authSignUp = createAsyncThunk(
       }
       return json;
     } catch (error) {
-      thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -37,7 +38,6 @@ export const fetchUser = createAsyncThunk("get/users", async (_, thunkAPI) => {
       },
     });
     const users = await res.json();
-    console.log(users);
     if (users.error) {
       return thunkAPI.rejectWithValue(users.error);
     }
@@ -47,30 +47,42 @@ export const fetchUser = createAsyncThunk("get/users", async (_, thunkAPI) => {
   }
 });
 
-export const logIn = createAsyncThunk("login", async ({login, password}, thunkAPI) => {
-  try {
-    const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      body: JSON.stringify({
-        login,
-        password,
-      }),
-      headers: { "Content-type": "application/json" },
-    });
-    const data = await response.json();
-    console.log(data)
-    localStorage.setItem("token", data.token);
-    return thunkAPI.fulfillWithValue(data)
-
-  } catch (error) {
-   return thunkAPI.rejectWithValue(error)
+export const logIn = createAsyncThunk(
+  "login",
+  async ({ login, password }, thunkAPI) => {
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        body: JSON.stringify({
+          login,
+          password,
+        }),
+        headers: { "Content-type": "application/json" },
+      });
+      const data = await response.json();
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      }
+      localStorage.setItem("token", data.token);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 const userSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    logOut: (state) => {
+      state.token = null;
+      state.userName = null;
+    },
+    deleteError: (state) => {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.fulfilled, (state, action) => {
@@ -87,16 +99,14 @@ const userSlice = createSlice({
       })
       //===================================
       .addCase(logIn.pending, (state, actions) => {
-        state.loading = true
+        state.loading = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        console.log(action.payload)
-        state.userName = action.payload.login
-        console.log(state.userName)
+        state.userName = action.payload.login;
+        state.error = null;
       })
       .addCase(logIn.rejected, (state, action) => {
-        state.error = action.payload
-        
+        state.error = action.payload;
       })
       .addCase(authSignUp.pending, (state) => {
         state.error = null;
@@ -109,8 +119,10 @@ const userSlice = createSlice({
       .addCase(authSignUp.fulfilled, (state, action) => {
         state.signingUp = false;
         state.error = null;
-      })
+        state.message = action.payload.message;
+      });
   },
 });
 
 export default userSlice.reducer;
+export const { logOut, deleteError } = userSlice.actions;
