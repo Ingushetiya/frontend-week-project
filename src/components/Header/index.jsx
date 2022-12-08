@@ -4,6 +4,7 @@ import styles from "./Header.module.scss";
 import { useSelector } from 'react-redux'
 const Header = () => {
   const userName = useSelector((state)=> state.user.userName)
+  const amount = useSelector((state)=> state.products.basket.products)
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -68,7 +69,7 @@ const Header = () => {
             <div className={styles.basket}>
             <span>Корзина</span>
             <div className={styles.line}></div>
-            <div className={styles.quantity}><span>5</span></div>
+            <div className={styles.quantity}><span>{amount?.length}</span></div>
           </div>
           </Link>
           
