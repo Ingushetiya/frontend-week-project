@@ -7,7 +7,7 @@ import Skeleton from "../Skeleton";
 const Main = () => {
   const product = useSelector((state) => state.products.products);
   const isLoading = useSelector((state) => state.products.loading);
-  console.log(isLoading);
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProduct());
