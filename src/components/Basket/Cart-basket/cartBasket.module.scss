@@ -32,12 +32,18 @@
             line-height: 14px;
 
             color: #A6A7AB;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            margin-bottom: 10px;
         }
-    }
+    }   
         .incDec{
             display: flex;
             margin-left: 220px;
             .dec{
+                
                 cursor: pointer;
                 display: flex;
                 align-items: center;
@@ -48,6 +54,8 @@
                 border-radius: 20px;
                 margin-right: 10px;
                 >span{
+                    position: relative;
+                    top: 4px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
