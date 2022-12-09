@@ -7,13 +7,17 @@
     border-radius: 10px;
     overflow: hidden;
     padding: 10px;
-    margin-bottom: 20px;
+    
     .card_img{
         // width: 100%;
 
         img{
             // display: block;
-            width: 100%;
+            width: 70%;
+            margin-left: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
     .info{
