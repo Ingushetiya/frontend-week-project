@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Authorization from "./components/Authorization";
 import Registration from './components/Registration'
 import Main from "./components/Main/index"
-
+import Contact from "./components/Contact"
 function App() {
  
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/auth"  element={<Authorization/>}/>
           <Route path="/registration" element={<Registration/>}/>
       </Routes>
+      <Contact />
       <Footer />
     </div>
   );
