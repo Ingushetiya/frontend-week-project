@@ -19,9 +19,8 @@ function App() {
     "Напитки",
     "Салаты",
     "Бургеры",
-    "Супы",
+    "Наборы",
   ];
-console.log(isActive);
   return (
     <div className="App">
       <Header />

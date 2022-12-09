@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import styles from "./Main.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,21 +25,20 @@ const Main = ({ index }) => {
       {isLoading
         ? [...new Array(6)].map((_, index) => {
             return (
-              <li>
+              <li key={index}>
                 <SkeletonMain key={index} />
               </li>
             );
           })
         : filteredProduct.map((item) => {
             return (
-              <li key={item.id}>
+              <li key={item._id}>
                 <Cart {...item} />
               </li>
             );
           })}
     </ul>
   );
-
 };
 
 export default Main;

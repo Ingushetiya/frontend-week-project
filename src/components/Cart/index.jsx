@@ -11,10 +11,11 @@ export default function Cart({ _id, description, image, name, price, weight }) {
 
   const dispatch = useDispatch();
 
-  const onCart = basketUser?.find(item => item.productId ===_id)
+  const onCart = basketUser?.find(item => item.productId === _id)
 
   const handleAddBasket = () => {
     // setBtn(true);
+   
     
      onCart ? alert("Уже добавлено"): dispatch(addBasket(_id))
    

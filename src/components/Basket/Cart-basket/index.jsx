@@ -38,7 +38,7 @@ const CartBasket = ({id, img, price, description, name, amount}) => {
               <img src="assets/plus.svg" alt="inc" />
             </button>
           </div>
-          <div className={styles.total}>{price} ₽</div>
+          <div className={styles.total}>{amount * price} ₽</div>
           <button onClick={()=>handleRemProd(id)} className={styles.remove}>
             <img src="assets/rem.svg" alt="rem" />
           </button>

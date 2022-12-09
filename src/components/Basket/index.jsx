@@ -5,7 +5,7 @@ import styles from "./Basket.module.scss";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserBasket } from "../app/features/BasketSlice";
+import { buyProduct, fetchProduct, fetchUserBasket } from "../app/features/BasketSlice";
 import { SkeletonBasket } from "../Skeleton";
 
 const Basket = () => {
@@ -14,9 +14,29 @@ const Basket = () => {
   const basketUser = useSelector((state) => state.products.basket);
   const isLoading = useSelector((state) => state.products.loading);
   const dispatch = useDispatch();
+
+  console.log(product, amount);
+
   useEffect(() => {
     dispatch(fetchUserBasket());
+    dispatch(fetchProduct())
   }, [dispatch]);
+
+
+  let array = []
+  let sum = 0
+  let counter = 0
+
+  for (let index = 0; index < product.length; index++) {
+      for (let i = 0; i < amount.length; i++) {
+          if (product[index]._id === amount[i].productId) {
+              array.push(product[index])
+              sum = sum + (product[index].price * amount[i].amount)
+              counter = counter + amount[i].amount
+          }
+      }
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.title_basket}>
@@ -24,12 +44,12 @@ const Basket = () => {
         <div className={styles.basket_h1}>
           <div className={styles.line}></div>
           <p>КОРЗИНА</p>
-          <span>(в корзине {amount?.length ? amount.length : 0} товара)</span>
+          <span>(в корзине {0} товара)</span>
         </div>
       </div>
       <div className={styles.cartParrent}>
         {isLoading
-          ? [...new Array(6)].map((_, index) => {
+          ? [...new Array(6)]?.map((_, index) => {
               return (
                 <div key={index} className={styles.skeleton}>
                   <SkeletonBasket />
@@ -37,7 +57,7 @@ const Basket = () => {
               );
             })
           : basketUser.products?.map((item) => {
-              return product.map((element) => {
+              return product?.map((element) => {
                 if (item.productId === element._id) {
                   return (
                     <CartBasket
@@ -61,9 +81,9 @@ const Basket = () => {
       <div className={styles.line_2}></div>
       <div className={styles.form}>
         <div className={styles.totalPrice}>
-          Итого: <span>500 ₽ </span>
+          Итого: <span>{sum}</span>
         </div>
-        <div className={styles.baskerGreenBtn}>
+        <div onClick={()=>dispatch(buyProduct())} className={styles.baskerGreenBtn}>
           <span>Оформить заказ</span>{" "}
         </div>
       </div>

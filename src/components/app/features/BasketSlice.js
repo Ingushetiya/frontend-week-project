@@ -24,16 +24,17 @@ export const addBasket = createAsyncThunk("product/addBasket", async (productId,
     try {
         const res = await fetch("http://localhost:5000/basket/add",{
             method: "PATCH",
-            body: JSON.stringify({productId: productId }),
+            body: JSON.stringify({productId: {productId}}),
             headers: { 
                 "Content-type": "application/json",
                 Authorization: `Bearer ${thunkAPI.getState().user.token}`
-             }
+             },
         })
         const product =  await res.json()
         if(product.error){
             thunkAPI.rejectWithValue(product.error)
         }
+        console.log(product, "ac");
         return thunkAPI.fulfillWithValue(productId)
     } catch (error) {
         return thunkAPI.rejectWithValue(error)
@@ -95,6 +96,22 @@ export const deleteProductBasket = createAsyncThunk("delete/product", async (dat
         return thunkAPI.rejectWithValue(error)
     }
 })
+export const buyProduct = createAsyncThunk("buy/product", async(data, thunkAPI)=>{
+    try {
+        const res = await fetch("http://localhost:5000/basket/buy",{
+            method: "PATCH", 
+            headers:{
+                "Content-type": "application/json",
+                Authorization: `Bearer ${thunkAPI.getState().user.token}`
+            }
+        }       
+        )
+        const product = await res.json()
+        console.log(product);
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+    }
+})
 const basketSlice = createSlice({
     name:"basket",
     initialState,
@@ -117,6 +134,7 @@ const basketSlice = createSlice({
         })
         //=======================================================
         .addCase(fetchUserBasket.fulfilled, (state, action)=>{
+            console.log("ACTIONNN BASKET",action.payload)
             state.basket = action.payload
             state.loading = false
             state.error = null
@@ -132,13 +150,13 @@ const basketSlice = createSlice({
         })
         //=======================================================
         .addCase(addBasket.fulfilled, (state, action)=>{
-            state.basket.products.push({productId: action.payload})
+            state.basket.products.push({productId: action.payload, amount: 1})
+            console.log(state.basket.products, "state");
             state.loading = false
             state.error = null
         })
         .addCase(addBasket.pending, (state, action)=>{
             state.error = null
-            state.loading = true
         })
         .addCase(addBasket.rejected, (state, action)=>{
             state.error = action.payload
@@ -151,7 +169,6 @@ const basketSlice = createSlice({
            state.error = null
            })
         .addCase(amountBasket.pending, (state, action)=>{
-            state.loading = true
             state.error = null
         })
         .addCase(amountBasket.rejected, (state, action)=>{
@@ -169,6 +186,19 @@ const basketSlice = createSlice({
             state.loading = false
         })
         .addCase(deleteProductBasket.pending, (state, action)=>{
+            state.error = null
+        })
+        //=======================================================
+        .addCase(buyProduct.fulfilled, (state, action)=>{
+            state.basket.products = []
+            state.loading = false
+            state.error = null
+        })
+        .addCase(buyProduct.rejected, (state, action)=>{
+            state.error = action.payload
+            state.loading = false
+        })
+        .addCase(buyProduct.pending, (state, action)=>{
             state.error = null
             state.loading = true
         })

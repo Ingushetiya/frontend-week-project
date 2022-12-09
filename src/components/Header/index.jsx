@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserBasket } from "../app/features/BasketSlice";
+
 const Header = () => {
-  const userName = useSelector((state)=> state.user.userName)
-  const amount = useSelector((state)=> state.products.basket.products)
+  const userName = useSelector((state) => state.user.userName);
+  const basket = useSelector((state) => state.products.basket);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUserBasket());
+  }, [dispatch]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.content}>
           <Link to="/">
-          <img
-            className={styles.logo}
-            width={50}
-            height={50}
-            src={"assets/logo.png"}
-            alt="logo"
-          />
+            <img
+              className={styles.logo}
+              width={50}
+              height={50}
+              src={"assets/logo.png"}
+              alt="logo"
+            />
           </Link>
           <div className={styles.adress}>
             <div className={styles.input}>
@@ -58,21 +67,22 @@ const Header = () => {
             <div className={styles.auth}>
               <div className={styles.line_auth}></div>
               <img src="assets/authlogo.svg" alt="authlogo" />
-              <span>{userName? userName:"Войти"}</span>
-              <div className="user">
-
-              </div>
+              <span>{userName ? userName : "Войти"}</span>
+              <div className="user"></div>
             </div>
-            </Link>
-
-          <Link to="/basket">
-            <div className={styles.basket}>
-            <span>Корзина</span>
-            <div className={styles.line}></div>
-            <div className={styles.quantity}><span>{amount?.length ? amount.length : 0}</span></div>
-          </div>
           </Link>
-          
+
+         
+            <Link to="/basket">
+              <div className={styles.basket}>
+                <span>Корзина</span>
+                <div className={styles.line}></div>
+                <div className={styles.quantity}>
+                  <span>{basket.products?.length}</span>
+                </div>
+              </div>
+            </Link>
+         
         </div>
       </div>
     </div>
