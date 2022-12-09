@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserBasket } from "../app/features/BasketSlice";
+import { SkeletonBasket } from "../Skeleton";
 
 const Basket = () => {
   const product = useSelector((state) => state.products.products);
   console.log("product", product);
   const basketUser = useSelector((state) => state.products.basket);
   console.log("BasketUser", basketUser.products);
+  const isLoading = useSelector((state) => state.products.loading);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUserBasket());
@@ -27,21 +29,30 @@ const Basket = () => {
         </div>
       </div>
       <div className={styles.cartParrent}>
-        {basketUser.products?.map((item) => {
-          return product.map((element)=>{
-              if(item.productId === element._id){
-                return <CartBasket 
-                  id = {element._id}
-                  img = {element.image}
-                  name = {element.name}
-                  price = {element.price}
-                  description = {element.description}
-                  amount = {item.amount}
-                />
-              }
-          })
-        })}
-        
+        {isLoading
+          ? [...new Array(6)].map((_, index) => {
+              return (
+                <div key={index} className={styles.skeleton}>
+                  <SkeletonBasket />
+                </div>
+              );
+            })
+          : basketUser.products?.map((item) => {
+              return product.map((element) => {
+                if (item.productId === element._id) {
+                  return (
+                    <CartBasket
+                      id={element._id}
+                      img={element.image}
+                      name={element.name}
+                      price={element.price}
+                      description={element.description}
+                      amount={item.amount}
+                    />
+                  );
+                }
+              });
+            })}
       </div>
 
       <div className={styles.addOrderText}>ДОБАВИТЬ К ЗАКАЗУ</div>
