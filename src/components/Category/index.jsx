@@ -1,7 +1,15 @@
 
 import styles from "./Category.module.scss";
 const Category = ({list,isActive,setIsActive}) => {
- 
+  const [isActive, setIsActive] = useState(0);
+  console.log(isActive);
+  const list = [
+    "Бургеры",
+    "Мясные блюда",
+    "Салаты",
+    "Супы",
+    "Напитки",
+  ];
   return (
     <div className={styles.wrapper}>
       <ul className={styles.ul}>

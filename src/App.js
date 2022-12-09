@@ -2,11 +2,11 @@ import { Routes, Route } from "react-router-dom";
 import Basket from "./components/Basket";
 import Category from "./components/Category";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Authorization from "./components/Authorization";
 import Registration from './components/Registration'
 import Main from "./components/Main/index"
 import {useState} from 'react'
-
 
 function App() {
 
@@ -23,8 +23,6 @@ console.log(isActive);
     <div className="App">
       <Header />
       <Category isActive={isActive} setIsActive={setIsActive} list={list}/>
-
-
       <Routes>
           {/* <Route path="/cart" element={<Cart/>} */}
           <Route path="/" element={ <Main index={isActive} /> } />
@@ -32,7 +30,7 @@ console.log(isActive);
           <Route path="/auth"  element={<Authorization/>}/>
           <Route path="/registration" element={<Registration/>}/>
       </Routes>
-
+      <Footer />
     </div>
   );
 }
