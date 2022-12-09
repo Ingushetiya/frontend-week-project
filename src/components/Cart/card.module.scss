@@ -1,15 +1,23 @@
 .card{
-    // width: 100%;
+    width: 370px;
+    
+    // width: 00%;
     // margin: auto;
     background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
     border-radius: 10px;
     overflow: hidden;
+    padding: 10px;
+    
     .card_img{
         // width: 100%;
 
         img{
             // display: block;
-            width: 100%;
+            width: 70%;
+            margin-left: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
     .info{
@@ -65,6 +73,7 @@
             color: white;
             font-family: "Gilroy";
             font-weight: 600;
+            margin-left: 9px;
         }
         button{
             width: 110px;
@@ -73,6 +82,7 @@
             border-radius: 10px;
             background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
             color: white;
+            margin-left: 100px;
             img{
                 width: 13px;
                 margin-left: 8px;
