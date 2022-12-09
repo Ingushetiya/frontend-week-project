@@ -7,6 +7,7 @@ import Authorization from "./components/Authorization";
 import Registration from './components/Registration'
 import Main from "./components/Main/index"
 import Contact from "./components/Contact"
+import { useState } from "react";
 
 
 
@@ -32,7 +33,7 @@ console.log(isActive);
           <Route path="/auth"  element={<Authorization/>}/>
           <Route path="/registration" element={<Registration/>}/>
       </Routes>
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </div>
   );
