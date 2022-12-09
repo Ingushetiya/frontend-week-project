@@ -82,6 +82,10 @@
             border-radius: 10px;
             background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
             color: white;
+            cursor: pointer;
+            &:disabled{
+                opacity: 0.5;
+              }
             margin-left: 100px;
             img{
                 width: 13px;

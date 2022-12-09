@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   message: null,
-  userName: null,
+  userName: localStorage.getItem("userName"),
   loading: false,
   error: null,
   signingUp: false,
@@ -64,6 +64,7 @@ export const logIn = createAsyncThunk(
         return thunkAPI.rejectWithValue(data.error);
       }
       localStorage.setItem("token", data.token);
+      localStorage.setItem("userName", data.login)
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

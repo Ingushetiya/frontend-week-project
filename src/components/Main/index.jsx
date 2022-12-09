@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import styles from "./Main.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,6 +40,7 @@ const Main = ({ index }) => {
           })}
     </ul>
   );
+
 };
 
 export default Main;

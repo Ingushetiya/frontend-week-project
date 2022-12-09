@@ -1,6 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { amountBasket, deleteProductBasket } from "../../app/features/BasketSlice";
 import styles from "./cartBasket.module.scss";
-const index = ({id, img, price, description, name, amount}) => {
+const CartBasket = ({id, img, price, description, name, amount}) => {
+  const dispatch = useDispatch()
+  const handleInc = () =>{
+    dispatch(amountBasket({id, type: "plus"}))    
+  }
+  const handleDec = () =>{
+    dispatch(amountBasket({id, type: "minus"}))
+  }
+  const handleRemProd = (id) =>{
+    dispatch(deleteProductBasket(id))
+  }
   return (
     <div key={id} className="wrapper">
       <div className={styles.cart_content}>      
@@ -18,22 +30,22 @@ const index = ({id, img, price, description, name, amount}) => {
             </span>
           </div>
           <div className={styles.incDec}>
-            <div className={styles.dec}>
+            <button disabled={amount === 1} onClick={()=>handleDec()} className={styles.dec}>
               <span></span>
-            </div>
+            </button>
             <div className={styles.amount}>{amount}</div>
-            <div className={styles.inc}>
+            <button  onClick={()=>handleInc()} className={styles.inc}>
               <img src="assets/plus.svg" alt="inc" />
-            </div>
+            </button>
           </div>
           <div className={styles.total}>{price} ₽</div>
-          <div className={styles.remove}>
+          <button onClick={()=>handleRemProd(id)} className={styles.remove}>
             <img src="assets/rem.svg" alt="rem" />
-          </div>
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default index;
+export default CartBasket;

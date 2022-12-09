@@ -9,15 +9,16 @@ import { fetchUserBasket } from "../app/features/BasketSlice";
 import { SkeletonBasket } from "../Skeleton";
 
 const Basket = () => {
+  const amount = useSelector((state)=> state.products.basket.products)
   const product = useSelector((state) => state.products.products);
-  console.log("product", product);
   const basketUser = useSelector((state) => state.products.basket);
-  console.log("BasketUser", basketUser.products);
   const isLoading = useSelector((state) => state.products.loading);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUserBasket());
   }, [dispatch]);
+  const product = useSelector((state) => state.products.products);
+  const basketUser = useSelector((state) => state.products.basket);
   return (
     <div className={styles.wrapper}>
       <div className={styles.title_basket}>
@@ -25,7 +26,7 @@ const Basket = () => {
         <div className={styles.basket_h1}>
           <div className={styles.line}></div>
           <p>КОРЗИНА</p>
-          <span>(в корзине {0} товара)</span>
+          <span>(в корзине {amount?.length} товара)</span>
         </div>
       </div>
       <div className={styles.cartParrent}>
@@ -54,7 +55,6 @@ const Basket = () => {
               });
             })}
       </div>
-
       <div className={styles.addOrderText}>ДОБАВИТЬ К ЗАКАЗУ</div>
       <div className={styles.addMeal}>
         <AddToOrder />
