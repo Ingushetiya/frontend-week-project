@@ -6,7 +6,7 @@ export default function Cart({description, image, name, price, weight}) {
     <>
       <div className={styles.card}>
         <div className={styles.card_img}>
-          <img width={250} height={250} src={image} alt="none" />
+          <img width={230} height={230} src={image} alt="none" />
         </div>
         <div className={styles.info}>
           <div className={styles.text}>

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+
 import styles from "./Category.module.scss";
-const Category = () => {
+const Category = ({list,isActive,setIsActive}) => {
   const [isActive, setIsActive] = useState(0);
   console.log(isActive);
   const list = [
@@ -16,6 +16,7 @@ const Category = () => {
         {list.map((item, index) => {
           return (
             <li onClick={()=>setIsActive(index)} className={isActive === index ? styles.active : ""}>{item}</li>
+          
           );
         })}
       </ul>
