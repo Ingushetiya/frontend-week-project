@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct } from '../app/features/BasketSlice';
 import Cart from '../Cart/index'
 const Main = () => {
+
     const product = useSelector((state)=> state.products.products)
     const dispatch = useDispatch()
+    
     useEffect(()=>{
         dispatch(fetchProduct())
     }, [dispatch])

@@ -1,0 +1,32 @@
+
+
+.footer{
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-evenly;
+    background: linear-gradient(270.7deg, #44403F 0.4%, #211F20 100%) #211F20;
+    font-family: "Montserrat";
+    .image{
+        display: flex;
+        align-items: center;
+    }
+    .copyrate{
+        
+        color: white;
+        .OOO{
+            color: rgba(255, 255, 255, 0.59);
+            font-size: 10px;
+        }
+        span{
+            display: block;
+            padding: 3px ;
+        }
+    }
+    .categ{
+        width: 50%;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
