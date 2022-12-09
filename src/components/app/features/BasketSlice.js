@@ -133,6 +133,8 @@ const basketSlice = createSlice({
         //=======================================================
         .addCase(addBasket.fulfilled, (state, action)=>{
             state.basket.products.push({productId: action.payload})
+            state.loading = false
+            state.error = null
         })
         .addCase(addBasket.pending, (state, action)=>{
             state.error = null
@@ -145,6 +147,8 @@ const basketSlice = createSlice({
         //========================================================
         .addCase(amountBasket.fulfilled, (state, action)=>{
            state.basket = action.payload
+           state.loading = false
+           state.error = null
            })
         .addCase(amountBasket.pending, (state, action)=>{
             state.loading = true
@@ -157,6 +161,8 @@ const basketSlice = createSlice({
         //=============================================================
         .addCase(deleteProductBasket.fulfilled, (state, action)=>{
             state.basket = action.payload
+            state.loading = false
+            state.error = null
         })
         .addCase(deleteProductBasket.rejected, (state, action)=>{
             state.error = action.payload

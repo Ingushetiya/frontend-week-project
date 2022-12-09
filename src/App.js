@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Authorization from "./components/Authorization";
 import Registration from './components/Registration'
 import Main from "./components/Main/index"
-import Contact from "./components/Contact"
+// import Contact from "./components/Contact"
 import { useState } from "react";
 
 

@@ -69,7 +69,7 @@ const Header = () => {
             <div className={styles.basket}>
             <span>Корзина</span>
             <div className={styles.line}></div>
-            <div className={styles.quantity}><span>{amount?.length}</span></div>
+            <div className={styles.quantity}><span>{amount?.length ? amount.length : 0}</span></div>
           </div>
           </Link>
           

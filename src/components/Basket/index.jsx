@@ -17,8 +17,6 @@ const Basket = () => {
   useEffect(() => {
     dispatch(fetchUserBasket());
   }, [dispatch]);
-  const product = useSelector((state) => state.products.products);
-  const basketUser = useSelector((state) => state.products.basket);
   return (
     <div className={styles.wrapper}>
       <div className={styles.title_basket}>
@@ -26,7 +24,7 @@ const Basket = () => {
         <div className={styles.basket_h1}>
           <div className={styles.line}></div>
           <p>КОРЗИНА</p>
-          <span>(в корзине {amount?.length} товара)</span>
+          <span>(в корзине {amount?.length ? amount.length : 0} товара)</span>
         </div>
       </div>
       <div className={styles.cartParrent}>
