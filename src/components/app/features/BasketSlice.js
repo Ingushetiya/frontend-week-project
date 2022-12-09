@@ -4,7 +4,7 @@ const initialState = {
     products:[],
     basket: {},
     error: null,
-    loadind: false
+    loading: false
 }
 
 export const  fetchProduct = createAsyncThunk("product/fetch", async(_, thunkAPI)=>{
@@ -60,29 +60,29 @@ const basketSlice = createSlice({
         builder
         .addCase(fetchProduct.fulfilled, (state, action)=>{
             state.products = action.payload
-            state.loadind = false
+            state.loading = false
             state.error = null
         })
         .addCase(fetchProduct.pending, (state, action)=>{
-            state.loadind = true
+            state.loading = true
             state.error = null
         })
         .addCase(fetchProduct.rejected, (state, action)=>{
             state.error = action.payload
-            state.loadind = false
+            state.loading = false
         })
         .addCase(fetchUserBasket.fulfilled, (state, action)=>{
             state.basket = action.payload
-            state.loadind = false
+            state.loading = false
             state.error = null
         })
         .addCase(fetchUserBasket.pending, (state, action)=>{
-            state.loadind = true
+            state.loading = true
             state.error = null
         })
         .addCase(fetchUserBasket.rejected, (state, action)=>{
             state.error = action.payload
-            state.loadind = false
+            state.loading = false
         })
     }
 

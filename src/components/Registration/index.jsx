@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { authSignUp, deleteError } from "../app/features/authSlice";
 import styles from "./reg.module.scss";
 
-const Reg = () => {
+const Registration = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const error = useSelector((state) => state.user.error);
@@ -66,4 +66,4 @@ const Reg = () => {
   );
 };
 
-export default Reg;
+export default Registration;
